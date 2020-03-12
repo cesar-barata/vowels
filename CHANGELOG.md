@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - Statistics: calculates the ratio of vowels per word.
 
+## [0.0.3] - 2020-03-12
+
+### Added
+- Components to calculate percentages of vowels in a word
+and in full text.
+
 ## [0.0.2] - 2020-03-12
 
 ### Added
