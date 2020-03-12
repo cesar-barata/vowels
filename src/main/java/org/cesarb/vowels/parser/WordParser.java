@@ -9,6 +9,6 @@ public class WordParser implements IWordParser {
                 .stream(
                         text.strip().split("\\s+")
                 )
-                .map(word -> word.replaceAll("![a-z][A-Z]", ""));
+                .map(word -> word.replaceAll("[^a-zA-Z]", ""));
     }
 }
