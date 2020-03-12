@@ -1,7 +1,7 @@
 package org.cesarb.vowels.tests;
 
-import org.cesarb.vowels.parser.IWordParser;
 import org.cesarb.vowels.parser.WordParser;
+import org.cesarb.vowels.parser.LowerCaseWordParser;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -11,12 +11,12 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class WordParserTest {
+public class LowerCaseWordParserTest {
     @Test
     public void parse_shouldParseFreeTextIntoACollectionOfWords() {
         String text = "this is a text";
         String[] expected = { "this", "is", "a", "text" };
-        IWordParser parser = new WordParser();
+        WordParser parser = new LowerCaseWordParser();
         assertEquals(
                 Arrays.asList(expected),
                 parser.parse(text).collect(Collectors.toList())
@@ -28,7 +28,7 @@ public class WordParserTest {
         String text = "  this   is    a     text    ";
         String[] expected = { "this", "is", "a", "text" };
 
-        WordParser parser = new WordParser();
+        LowerCaseWordParser parser = new LowerCaseWordParser();
         Stream<String> result = parser.parse(text);
         assertArrayEquals(expected, result.toArray());
     }
@@ -38,7 +38,17 @@ public class WordParserTest {
         String text = "this, is a text.";
         String[] expected = { "this", "is", "a", "text" };
 
-        WordParser parser = new WordParser();
+        LowerCaseWordParser parser = new LowerCaseWordParser();
+        Stream<String> result = parser.parse(text);
+        assertArrayEquals(expected, result.toArray());
+    }
+
+    @Test
+    public void parse_shouldIgnoreCaseOnText() {
+        String text = "this IS a tExt";
+        String[] expected = { "this", "is", "a", "text" };
+
+        LowerCaseWordParser parser = new LowerCaseWordParser();
         Stream<String> result = parser.parse(text);
         assertArrayEquals(expected, result.toArray());
     }
