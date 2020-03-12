@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Vowel recognizer: finds vowels in a word.
+- Class that represents a generic triple of objects.
+
+### Removed
+- Pair class.
 
 ## [0.0.1] - 2020-03-12
 
